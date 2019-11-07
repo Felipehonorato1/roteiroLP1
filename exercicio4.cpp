@@ -7,12 +7,15 @@ int main(){
     float camisa[23] = {0};
     int voto = -2;
     int contagem = 0;
-    int maior;
+    int maior = 0; // maior lido até o momento!
 
     while(voto!=0){
         cin >> voto;
         if(voto == 0) break;
-        if(voto < 0 || voto > 23 ) cout << "Voto invalido!" << endl;
+        if(voto < 0 || voto > 23 ){
+             cout << "Voto invalido!" << endl;
+             continue;
+        }
         camisa[voto]++;
         contagem++;
         
@@ -27,9 +30,13 @@ int main(){
           }
 
         for(int i=0;i<23;i++){
-            if(camisa[i] > camisa[i+1]) maior = i;
+            if(camisa[i]>maior){
+                maior = i;
+            }
+
             
         }
+
         cout << "O jogador mais votado foi o camisa " << maior << " com " << camisa[maior]/contagem*100 << "% dos votos" << endl;
 
     return 0;
